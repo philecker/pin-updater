@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 module.exports = {
-  url: process.env.NETFLIX_URL,
-  username: process.env.NETFLIX_USERNAME,
-  password: process.env.NETFLIX_PASSWORD,
+  NETFLIX_URL: process.env.NETFLIX_URL,
+  NETFLIX_USERNAME: process.env.NETFLIX_USERNAME,
+  NETFLIX_PASSWORD: process.env.NETFLIX_PASSWORD,
 };

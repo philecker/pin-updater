@@ -3,7 +3,11 @@ const puppeteer = require('puppeteer');
 (async () => {
   try {
     // Define .env variables
-    const { NETFLIX_URL, NETFLIX_USERNAME, NETFLIX_PASSWORD } = require('../../config');
+    const {
+      NETFLIX_URL,
+      NETFLIX_USERNAME,
+      NETFLIX_PASSWORD
+    } = require('../../config');
 
     const minimal_args = [
       '--autoplay-policy=user-gesture-required',
@@ -46,12 +50,16 @@ const puppeteer = require('puppeteer');
     // Open new browswer and set timeout
     const browser = await puppeteer.launch({
       headless: false,
-      devtools: false,
+      devtools: true,
       args: minimal_args
     })
 
     const page = await browser.newPage()
     page.setDefaultNavigationTimeout(0);
+
+    console.log(NETFLIX_URL)
+    console.log(NETFLIX_USERNAME)
+    console.log(NETFLIX_PASSWORD)
 
     await page.goto(NETFLIX_URL)
 
