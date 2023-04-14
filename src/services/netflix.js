@@ -1,10 +1,9 @@
 const puppeteer = require('puppeteer');
-// const Store = require('electron-store');
 
 (async () => {
   try {
     // Define .env variables
-    const { url, username, password } = require('./../config/netflix');
+    const { NETFLIX_URL, NETFLIX_USERNAME, NETFLIX_PASSWORD } = require('../../config');
 
     const minimal_args = [
       '--autoplay-policy=user-gesture-required',
@@ -54,10 +53,10 @@ const puppeteer = require('puppeteer');
     const page = await browser.newPage()
     page.setDefaultNavigationTimeout(0);
 
-    await page.goto(url)
+    await page.goto(NETFLIX_URL)
 
-    await page.type('input#id_userLoginId', username)
-    await page.type('input#id_password', password)
+    await page.type('input#id_userLoginId', NETFLIX_USERNAME)
+    await page.type('input#id_password', NETFLIX_PASSWORD)
 
     // await Promise.all([
     //   // page.click('input#loginBtn'),

@@ -134,3 +134,6 @@ dist
 .zshrc
 .DS_Store
 .zshrc
+.zshrc
+.vscode/settings.json
+.zshrc
