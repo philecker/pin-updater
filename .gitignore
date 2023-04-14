@@ -126,3 +126,11 @@ dist
 .yarn/install-state.gz
 .pnp.*
 .zshrc
+.zshrc
+.DS_Store
+.DS_Store
+*.env
+.zshrc
+.zshrc
+.DS_Store
+.zshrc
