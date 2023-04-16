@@ -1,14 +1,13 @@
 const puppeteer = require('puppeteer');
+const dotenv = require('dotenv');
+dotenv.config(); // { debug: true }
+
+const NETFLIXURL = process.env.NETFLIXURL;
+const NETFLIXUSERNAME = process.env.NETFLIXUSERNAME;
+const NETFLIXPASSWORD = process.env.NETFLIXPASSWORD;
 
 (async () => {
   try {
-    // Define .env variables
-    const {
-      NETFLIX_URL,
-      NETFLIX_USERNAME,
-      NETFLIX_PASSWORD
-    } = require('../../config');
-
     const minimal_args = [
       '--autoplay-policy=user-gesture-required',
       '--disable-background-networking',
@@ -57,19 +56,15 @@ const puppeteer = require('puppeteer');
     const page = await browser.newPage()
     page.setDefaultNavigationTimeout(0);
 
-    console.log(NETFLIX_URL)
-    console.log(NETFLIX_USERNAME)
-    console.log(NETFLIX_PASSWORD)
+    await page.goto(NETFLIXURL)
 
-    await page.goto(NETFLIX_URL)
+    await page.type('input#id_userLoginId', NETFLIXUSERNAME)
+    await page.type('input#id_password', NETFLIXPASSWORD)
 
-    await page.type('input#id_userLoginId', NETFLIX_USERNAME)
-    await page.type('input#id_password', NETFLIX_PASSWORD)
-
-    // await Promise.all([
-    //   // page.click('input#loginBtn'),
-    //   page.waitForNavigation()
-    // ]);
+    await Promise.all([
+      page.click('button.login-button'),
+      page.waitForNavigation()
+    ]);
 
     // // await navigating to Leave Status page
 

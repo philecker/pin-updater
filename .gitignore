@@ -78,6 +78,7 @@ web_modules/
 .env.test.local
 .env.production.local
 .env.local
+*.env
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -126,14 +127,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 .zshrc
-.zshrc
 .DS_Store
-.DS_Store
-*.env
-.zshrc
-.zshrc
-.DS_Store
-.zshrc
-.zshrc
 .vscode/settings.json
-.zshrc
