@@ -50,6 +50,7 @@ const NETFLIXPASSWORD = process.env.NETFLIXPASSWORD;
     const browser = await puppeteer.launch({
       headless: false,
       devtools: true,
+      userDataDir: '../../../.cache',
       args: minimal_args
     })
 
@@ -66,17 +67,31 @@ const NETFLIXPASSWORD = process.env.NETFLIXPASSWORD;
       page.waitForNavigation()
     ]);
 
-    // // await navigating to Leave Status page
+    // await navigating to Adult profile
 
-    // // Wait for
-    // const goToLbl = '#goToLbl';
-    // await page.waitForSelector(goToLbl);
-    // await page.click(goToLbl);
+    // Wait for
+    const adultProfile = 'a.profile-link[tabindex="0"]';
+    await page.waitForSelector(adultProfile);
+    await page.click(adultProfile);
 
-    // // Wait for
-    // const bus__PE = '#bus__PE';
-    // await page.waitForSelector(bus__PE);
-    // await page.click(bus__PE);
+    // Wait for
+    const pinInput1 = "input[data-uia='pin-number-0']";
+    const pinInput2 = "input[data-uia='pin-number-1']";
+    const pinInput3 = "input[data-uia='pin-number-2']";
+    const pinInput4 = "input[data-uia='pin-number-3']";
+
+    await page.waitForSelector(pinInput1);
+    await page.click(pinInput1);
+    await page.type(pinInput, "1");
+
+    await page.waitForSelector(pinInput2);
+    await page.type(pinInput, "4");
+
+    await page.waitForSelector(pinInput3);
+    await page.type(pinInput, "7")
+
+    await page.waitForSelector(pinInput4);
+    await page.type(pinInput, "0")
 
     // // Wait for
     // const dpt__ES = '#dpt__ES';
